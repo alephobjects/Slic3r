@@ -17,7 +17,34 @@ set(DEB_DEPENDS
 	"perl (>= 5.20.2)"
 	"libextutils-typemaps-default-perl (>= 1.05)"
 	"libextutils-xspp-perl (>= 0.1800)"
+	"libgl1-mesa-glx | libgl1"
+	"libglu1-mesa | libglu1"
+	"libc6 (>= 2.14)"
+	"libstdc++6 (>= 4.9)"
+	"libtbb2"
+	"libboost-system${Boost_MAJOR_VERSION}.${Boost_MINOR_VERSION}.0"
+	"libboost-filesystem${Boost_MAJOR_VERSION}.${Boost_MINOR_VERSION}.0"
+	"libboost-thread${Boost_MAJOR_VERSION}.${Boost_MINOR_VERSION}.0"
+	"libboost-log${Boost_MAJOR_VERSION}.${Boost_MINOR_VERSION}.0"
+	"libboost-locale${Boost_MAJOR_VERSION}.${Boost_MINOR_VERSION}.0"
+	"libexpat1 (>= 2.0.1)"
+	"libgcc1 (>= 1:4.1.1)"
 )
+
+list(APPEND DEB_DEPENDS
+	"libwxgtk3.0-dev"
+	"libwxbase3.0-dev"
+	"libglew-dev"
+)
+# Todo Actually we want to include these libraries:
+# For Jessie:
+#	"libwxbase3.0-0 (>= 3.0.2)"
+#	"libwxgtk3.0-0 (>= 3.0.2)"
+#	"libglew1.10 (>= 1.10.0)"
+# For Stretch:
+#	"libwxbase3.0-0v5"
+#	"libwxgtk3.0-0v5"
+#	"libglew2.0"
 
 string(REPLACE ";" "," DEB_DEPENDS "${DEB_DEPENDS}")
 set(CPACK_DEBIAN_PACKAGE_DEPENDS ${DEB_DEPENDS})
