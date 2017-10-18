@@ -15,6 +15,9 @@ set(CPACK_PACKAGE_FILE_NAME "${CMAKE_PROJECT_NAME}-${CPACK_PACKAGE_VERSION}_${CP
 
 set(DEB_DEPENDS
 	"perl (>= 5.20.2)"
+	"libmoo-perl"
+	"libopengl-perl"
+	"libwx-glcanvas-perl"
 	"libextutils-typemaps-default-perl (>= 1.05)"
 	"libextutils-xspp-perl (>= 0.1800)"
 	"libgl1-mesa-glx | libgl1"
