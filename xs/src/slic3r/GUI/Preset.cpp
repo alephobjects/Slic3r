@@ -78,11 +78,25 @@ PresetCollection::PresetCollection(Preset::Type type, const std::vector<std::str
 
 // Load all presets found in dir_path.
 // Throws an exception on error.
-void PresetCollection::load_presets(const std::string &dir_path, const std::string &subdir)
-{
+
+using namespace boost::filesystem;
+struct recursive_directory_range {
+    typedef recursive_directory_iterator iterator;
+    recursive_directory_range(path p) : p_(p) {}
+
+    iterator begin() { return recursive_directory_iterator(p_); }
+    iterator end() { return recursive_directory_iterator(); }
+
+    path p_;
+};
+
+void PresetCollection::load_presets(const std::string &dir_path, const std::string &subdir) {
     m_presets.erase(m_presets.begin()+1, m_presets.end());
     t_config_option_keys keys = this->default_preset().config.keys();
-	for (auto &file : boost::filesystem::directory_iterator(boost::filesystem::canonical(boost::filesystem::path(dir_path) / subdir).make_preferred()))
+	for (auto &file : recursive_directory_range(boost::filesystem::path(dir_path) / subdir ))
+//	for (auto &file : boost::filesystem::directory_iterator(
+//		boost::filesystem::canonical( boost::filesystem::path(dir_path) / subdir ).make_preferred() ))
+
         if (boost::filesystem::is_regular_file(file.status()) && boost::algorithm::iends_with(file.path().filename().string(), ".ini")) {
             std::string name = file.path().filename().string();
             // Remove the .ini suffix.
