@@ -18,6 +18,7 @@ set(DEB_DEPENDS
 	"libmoo-perl"
 	"libopengl-perl"
 	"libwx-glcanvas-perl"
+	"liblocal-lib-perl"
 	"libextutils-typemaps-default-perl (>= 1.05)"
 	"libextutils-xspp-perl (>= 0.1800)"
 	"libgl1-mesa-glx | libgl1"
