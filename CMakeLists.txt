@@ -2,7 +2,7 @@
 cmake_minimum_required(VERSION 2.8)
 
 project(slic3r-prusa3d)
-find_package(Boost REQUIRED COMPONENTS filesystem log locale)
+find_package(Boost REQUIRED COMPONENTS system filesystem log locale)
 
 if (NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
   message(STATUS "No build type selected, default to Release")
